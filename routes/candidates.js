@@ -58,19 +58,25 @@ router.post('/', function (req, res) {
 
 router.delete('/:id/:name', function (req, res) {
     const data = getAllData();
-    const candidate = _.remove(data.candidates, (candidate) => {
+    const candidate = _.find(data.candidates, (candidate) => {
         return candidate.id === req.params.id;
     });
 
     if (candidate) {
-        sharedService.removeCandidateFromGroups(candidate[0]);
-        sharedService.updatedGroups.then((groups) => {
-            console.log(groups);
-        });
-        // updateAllData(data);
-    }
+        const promise = sharedService.removeCandidate(candidate);
+        promise.then((payload) => {
+            console.log('resolved', payload);
+            const data = getAllData();
+            const candidate = _.remove(data.candidates, (candidate) => {
+                return candidate.id === req.params.id;
+            });
 
-    res.send(candidate ? candidate[0] : '');
+            updateAllData(data);
+            res.send(candidate ? candidate[0] : '');
+        })
+    } else {
+        res.status(500).send('Candidate not found');
+    }
 });
 
 

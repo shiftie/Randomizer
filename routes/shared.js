@@ -1,11 +1,17 @@
 const EventEmitter = require('events').EventEmitter;
+const Q = require('q');
 const evt = new EventEmitter();
+const deferred = Q.defer();
 
 module.exports = {
-    removeCandidateFromGroups: (candidate) => {
-        evt.emit('removeCandidateFromGroups', candidate);
+    removeCandidate: (candidate) => {
+        evt.emit('removeCandidate', candidate);
+
+        return deferred.promise;
     },
-    handleCandidateRemovalFromGroups: (handler) => {
-        evt.on('removeCandidateFromGroups', handler);
+    onRemoveCandidate: (handler) => {
+        evt.on('removeCandidate', (candidate) => {
+            deferred.resolve(handler(candidate));
+        });
     }
 };

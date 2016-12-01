@@ -18,13 +18,14 @@ function checkDataFile(req, res, next) {
     next();
 }
 
-sharedService.handleCandidateRemovalFromGroups((candidate) => {
-    const groups = getGroups();
-    groups = _.forEach(groups, (group) => {
+sharedService.onRemoveCandidate((candidate) => {
+    const data = getAllData();
+    data.groups = _.forEach(data.groups, (group) => {
         _.remove(group.candidates, candidate);
     });
+    updateAllData(data);
 
-    sharedService.updatedGroups.resolve(groups);
+    return data.groups;
 });
 
 function createDataFile() {
