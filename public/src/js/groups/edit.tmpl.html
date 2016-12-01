@@ -1,0 +1,25 @@
+edit
+
+<input type="text" ng-model="groupsEditCtrl.group.name">
+<button type="button" name="button" ng-click="groupsEditCtrl.update()">OK</button>
+<button type="button" name="button" ng-click="groupsEditCtrl.delete()">Delete</button>
+
+Available
+<ul class="nav nav-sidebar">
+    <li ng-repeat="candidate in groupsEditCtrl.candidates">
+        <button type="button" name="button" ng-click="groupsEditCtrl.addCandidate(candidate)">
+            {{candidate.name}}
+        </button>
+    </li>
+</ul>
+
+Group candidates
+<ul class="nav nav-sidebar">
+    <li ng-repeat="candidate in groupsEditCtrl.group.candidates">
+        <button type="button" name="button" ng-click="groupsEditCtrl.removeCandidate(candidate)">
+            {{candidate.name}}
+        </button>
+    </li>
+</ul>
+
+<button type="button" name="button" ng-click="groupsEditCtrl.update()">OK</button>

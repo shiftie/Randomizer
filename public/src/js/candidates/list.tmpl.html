@@ -1,0 +1,9 @@
+<a ui-sref="candidates.add">Add</a>
+
+<ul class="nav nav-sidebar">
+    <li ng-repeat="candidate in candidatesListCtrl.candidates">
+        <a ui-sref="candidates.edit({id:candidate.id})">
+            {{candidate.name}}
+        </a>
+    </li>
+</ul>

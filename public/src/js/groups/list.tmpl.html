@@ -1,0 +1,9 @@
+<a ui-sref="groups.add">Add</a>
+
+<ul class="nav nav-sidebar">
+    <li ng-repeat="group in groupsListCtrl.groups">
+        <a ui-sref="groups.edit({id:group.id})">
+            {{group.name}}
+        </a>
+    </li>
+</ul>
