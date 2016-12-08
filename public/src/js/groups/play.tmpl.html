@@ -1,0 +1,13 @@
+Play
+
+Players
+<ul>
+    <li ng-repeat="candidate in groupsPlayCtrl.group.candidates">
+        {{candidate.name}}
+    </li>
+</ul>
+
+
+<div id="chart"></div>
+<input type="text" ng-model="groupsPlayCtrl.slices" ng-change="groupsPlayCtrl.updateChart()">
+<button type="button" name="button" ng-click="groupsPlayCtrl.play()">Play</button>

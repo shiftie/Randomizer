@@ -7,6 +7,7 @@ const candidates = require('./routes/candidates');
 const groups = require('./routes/groups');
 const app = express();
 
+app.use('/', express.static('public/dist/css'));
 app.use('/', express.static('public/dist/js'));
 app.use('/', express.static('public/src/js'));
 app.use(bodyParser.urlencoded({ extended: false }));

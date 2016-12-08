@@ -2,8 +2,8 @@
 
 <ul class="nav nav-sidebar">
     <li ng-repeat="group in groupsListCtrl.groups">
-        <a ui-sref="groups.edit({id:group.id})">
+        <a ui-sref="groups.edit({id: group.id})">
             {{group.name}}
-        </a>
+        </a> <a ui-sref="groups.play({id: group.id})">Play</a>
     </li>
 </ul>

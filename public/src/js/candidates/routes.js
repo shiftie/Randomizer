@@ -20,6 +20,9 @@ angular
                 'list@candidates': {
                     controller: 'CandidatesListCtrl as candidatesListCtrl',
                     templateUrl: '/candidates/list.tmpl.html',
+                },
+                'menu@': {
+                    templateUrl: 'main.tmpl.html',
                 }
             }
         })

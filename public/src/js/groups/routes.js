@@ -20,6 +20,9 @@ angular
                 'list@groups': {
                     controller: 'GroupsListCtrl as groupsListCtrl',
                     templateUrl: '/groups/list.tmpl.html',
+                },
+                'menu@': {
+                    templateUrl: 'main.tmpl.html',
                 }
             }
         })
@@ -52,6 +55,23 @@ angular
                 'edit@groups': {
                     controller: 'GroupsAddCtrl as groupsAddCtrl',
                     templateUrl: '/groups/add.tmpl.html',
+                }
+            }
+        })
+        .state('groups.play', {
+            url: '/play/:id',
+            name: 'groups.play',
+            resolve: {
+                group: (GroupsService, $stateParams) => {
+                    return GroupsService.get({id: $stateParams.id}).$promise.then((result) => {
+                        return result;
+                    });
+                }
+            },
+            views: {
+                '@': {
+                    controller: 'GroupsPlayCtrl as groupsPlayCtrl',
+                    templateUrl: '/groups/play.tmpl.html',
                 }
             }
         });

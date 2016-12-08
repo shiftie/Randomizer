@@ -1,5 +1,65 @@
 $color1: #ff00ff;
 
-body {
-    color: $color1;
+
+
+#chart {
+    position: relative;
+    width: 360px;
+    height: 360px;
+    margin: 0 auto;
+
+    &::before {
+        position: absolute;
+        z-index: 1;
+        top: -25px;
+        left: 50%;
+        width: 0;
+        height: 0;
+        content: "";
+        transform: translateX(-2px);
+        border-width: 50px 2px 0 2px;
+        border-style: solid;
+        border-color: #cc0000 transparent transparent transparent;
+    }
+}
+
+.tooltip {
+    font-size: 12px;
+    position: absolute;
+    z-index: 10;
+    top: 95px;
+    left: 130px;
+    display: none;
+    width: 80px;
+    padding: 10px;
+    text-align: center;
+    color: #333333;
+    background: #eeeeee;
+    box-shadow: 0 0 5px #999999;
+}
+
+.legend {
+    font-size: 12px;
+}
+
+.wheel {
+    &--play {
+        transition: transform 5s cubic-bezier(0.400, 0.075, 0.000, 1.075);
+    }
+}
+
+svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+rect {
+    cursor: pointer;
+
+    stroke-width: 2;
+}
+
+rect.disabled {
+    fill: transparent !important;
 }
